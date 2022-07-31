@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}盛林科技-首页{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="row" style="margin-top: 20px">
+
+<div class="col"></div>
+<div class="col-8">
+    <ul class="question-ul">
+        {% for question in questions %}
+           <li>
+            <div class="side-question">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="" class="side-question-avatar">
+            </div>
+            <div class="question-main">
+                <div class="question-title"><a href="{{ url_for('qa.question_detail', question_id=question.id) }}">{{ question.title }}</a></div>
+                <div class="question-content">{{ question.content }}</div>
+                <div class="question-detail">
+                    <span class="question-author">{{ question.author.username }}</span>
+                    <span class="question-time">{{ question.create_time }}</span>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+        {% for message in get_flashed_messages() %}
+            <div class="form-group">
+                <div class="text-danger">{{ message }}</div>
+            </div>
+        {% endfor %}
+    </ul>
+</div>
+<div class="col"></div>
+
+</div>
+
+{% endblock %}

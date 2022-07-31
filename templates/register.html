@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}盛林传媒-注册{% endblock %}
+
+{% block head %}
+    <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="row mt-5">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+
+            <form method="POST" action="{{ url_for('user.register') }}"> {# action 表明要把这些表单数据发送给谁#}
+            <div class="form-group">
+                <label for="exampleInputEmail1">邮箱地址</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                <small id="emailHelp" class="form-text text-muted">我们绝不会分享你的邮箱给任何人.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">验证码</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="captcha">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="captcha-btn">获取验证码</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">用户名</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">密码</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">确认密码</label>
+                <input type="password" class="form-control" name="password_confirm">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">提交</button>
+        </form>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+{% endblock %}
